@@ -41,7 +41,7 @@ const deleteNav = (indexData) => {
 }
 
 
-console.log("test")
+console.log("add testing changes")
   return (
     <section className="admin-header container">
         <h1>This is admin Header</h1>
