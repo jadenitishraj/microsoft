@@ -1,0 +1,420 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --dark: #333;
+  --light: #fff;
+  --lightgrey: #f4f4f4;
+  --Nero: #262626;
+  --grey: #f2f2f2;
+  --lightblack: #616161;
+  --Gray80: #ccc;
+  --black: #000000;
+  --blue: #0067b8;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--light);
+  color: var(--black);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+a {
+  color: var(--Nero);
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  width: 90%;
+  max-width: 1400px;
+  margin: auto;
+}
+
+.btn {
+  cursor: pointer;
+  display: inline-block;
+  border: 0;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #0067b8;
+  color: var(--light);
+}
+
+.menu-btn {
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  z-index: 2;
+  display: none;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.dark {
+  color: var(--light);
+}
+
+.dark .btn {
+  background-color: var(--lightgrey);
+  color: var(--dark);
+}
+
+/*====== End Main Rules ======*/
+
+/*====== Start Navigation bar ======*/
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  padding: 20px 0;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.logo {
+  width: 110px;
+}
+
+.main-menu {
+  display: flex;
+}
+
+.main-menu li {
+  padding: 0 10px;
+}
+
+.main-menu li a:hover {
+  border-bottom: 2px solid var(--Nero);
+}
+
+.main-menu li a {
+  padding-bottom: 2px;
+}
+
+.right-menu {
+  display: flex;
+}
+
+.right-menu li {
+  padding: 0 4px;
+}
+
+/* ====== Start Showcase  ======*/
+
+.showcase {
+  height: 550px;
+  background: url(https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-M365-Icon-Bounce-Word-Merch:VP4-1399x600)
+    no-repeat center center/cover;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-bottom: 50px;
+  padding-left: 137px;
+  margin-bottom: 60px;
+}
+
+.showcase p {
+  width: 33%;
+  margin-bottom: 20px;
+}
+
+.showcase h1 {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* ====== Start Product Link  ======*/
+
+.product-links {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 80px;
+}
+
+.product-links div {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 20px;
+}
+
+.product-links div a {
+  color: var(--blue);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* ====== End Product LInk  ======*/
+
+/* Home Cards1 */
+.home-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  margin-bottom: 80px;
+}
+
+.home-cards img {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.home-cards h3 {
+  margin-bottom: 5px;
+}
+
+.home-cards a {
+  display: inline-block;
+  padding-top: 10px;
+  color: var(--blue);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.home-cards a:hover i {
+  margin-left: 10px;
+}
+
+/* Home Cards1 ends here */
+
+/* Xbox Section  */
+
+.xbox {
+  /* width: 100%; */
+  height: 600px;
+  background: url("https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Xbox-Series-S-Light-Background:VP4-1260x600")
+    no-repeat center center/cover;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 53px;
+  align-items: center;
+}
+
+.xbox .content {
+  width: 40%;
+  padding: 50px 0 0 93px;
+}
+
+.xbox p {
+  margin: 10px 0 20px;
+}
+
+/* Xbox Section Ends here */
+
+/* Social media Follow */
+
+.follow {
+  display: flex;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.follow img {
+  height: 32px;
+}
+
+/* (.fllow * ) mean for every element in  .fllow give margin-right: 10px; */
+.follow img,
+span {
+  margin-right: 10px;
+}
+
+/* Social media Follow ends here*/
+
+/* footer (Links) */
+
+.links {
+  background-color: var(--grey);
+  color: var(--lightblack);
+  font-size: 12px;
+  padding: 35px 0;
+}
+
+.links-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 10px;
+}
+
+.links li {
+  line-height: 2.8;
+}
+
+/*  footer (copyRight)  */
+
+.footer {
+  background-color: var(--grey);
+  color: var(--lightblack);
+  font-size: 12px;
+  padding: 20px 0;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer div {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.footer div i {
+  margin-right: 10px;
+}
+
+.footer ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.footer li {
+  margin-right: 30px;
+  margin-bottom: 20px;
+}
+
+/* ====== End footer ======*/
+
+/* If the screen size is 700px or smaller */
+
+@media (max-width: 700px) {
+  .menu-btn {
+    display: block;
+  }
+
+  .menu-btn:hover {
+    opacity: 0.5;
+  }
+
+  .main-nav ul.right-menu {
+    margin-right: 50px;
+  }
+
+  .main-nav ul.main-menu {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: var(--grey);
+    border-right: 1px solid var(--Gray80);
+    opacity: 0.9;
+    padding: 30px;
+    transform: translateX(-500px);
+    /* go off the screen(like display:none) */
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .main-nav ul.main-menu li {
+    padding: 10px;
+    border-bottom: 1px solid var(--Gray80);
+    font-size: 15px;
+  }
+
+  .main-nav ul.main-menu li:last-child {
+    border-bottom: 0;
+  }
+
+  .main-nav ul.main-menu.show {
+    transform: translateX(-20px);
+    /* show the menu on click */
+  }
+
+  .home-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .xbox .content p {
+    display: none;
+  }
+
+  .xbox .content h2 {
+    margin-bottom: 40px;
+  }
+
+  .carbon .content {
+    width: 85%;
+  }
+
+  .links .links-inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* If the screen size is 500px or smaller */
+
+@media (max-width: 500px) {
+  .showcase {
+    padding-left: 54px;
+  }
+
+  .product-links {
+    flex-direction: column;
+  }
+
+  .product-links div {
+    margin-bottom: 35px;
+  }
+
+  .xbox {
+    background: url("https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Highlight-Xbox-Series-S-Light-Background:VP1-539x440")
+      no-repeat center center/cover;
+  }
+
+  .home-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .links .links-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .links .links-inner ul {
+    margin-bottom: 20px;
+  }
+
+  .footer .footer-inner {
+    display: grid;
+  }
+
+  .footer .footer-inner li {
+    margin: 10px;
+  }
+}
+
+/* ====== End Media Queries ======*/
+
+.box1 {
+  display: flex;
+  margin-top: 80px;
+}
+
+.cards {
+  margin: 20px;
+  padding: 0px 40px;
+  cursor: pointer;
+}
