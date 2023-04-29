@@ -40,6 +40,8 @@ const deleteNav = (indexData) => {
 
 }
 
+
+console.log("test")
   return (
     <section className="admin-header container">
         <h1>This is admin Header</h1>
