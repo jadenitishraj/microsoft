@@ -1,11 +1,14 @@
 import {useState, useEffect} from 'react';
 import HeaderForm from './HeaderForm';
+import UpdateHeaderForm from './UpdateHeaderForm';
+
 import HeaderList from "./HeaderList";
 
 export default function AdminHeader() {
-const [navList, setNavList] = useState([]);
-
+const [navList, setNavList] = useState(['test1','test2']);
 const [navText, setNavText] = useState('');
+const [showUpdate, setShowUpdate] = useState(false);
+const [updateText, setUpdateText] = useState({});
 
 
 useEffect(() => {
@@ -40,13 +43,39 @@ const deleteNav = (indexData) => {
 
 }
 
+const updateNav = (indexData, navListData) => {
+  setShowUpdate(true);
+  const updateJson = {...updateText};
+  updateJson.key = indexData;
+  updateJson.value = navListData;
+  setUpdateText(updateJson);
+}
 
-console.log("add testing changes")
+
+const submitUpdateForm = (updatedNavText,key) => {
+  const updatedNavData = [...navList];
+
+  updatedNavData[key] = updatedNavText;
+  
+  // const updatedArray = updatedNavData.map((updatedNavDatas, index) => {
+  //   if(index === key) {
+  //     return updatedNavText; 
+  //   }
+  //   return updatedNavDatas
+  // })
+  
+  setNavList(updatedNavData);
+  setShowUpdate(false);
+
+}
+
+
   return (
     <section className="admin-header container">
         <h1>This is admin Header</h1>
-        <HeaderForm textChange={textChange} submitData={submitData}/>
-        <HeaderList navList={navList} deleteNav={deleteNav}/>
+        {!showUpdate && <HeaderForm textChange={textChange} submitData={submitData}/>}
+        { showUpdate && <UpdateHeaderForm setShowUpdate={setShowUpdate} updateText={updateText} submitUpdateForm={submitUpdateForm}/> }
+        <HeaderList navList={navList} deleteNav={deleteNav} updateNav={updateNav}/>
     </section>
   );
 }
