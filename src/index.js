@@ -17,7 +17,7 @@ const root = createRoot(rootElement);
 
 root.render(
   <StrictMode>
-    <Provider store={store}>
+    <Provider store={store}>   
       <Main />
     </Provider>
   </StrictMode>

@@ -4,7 +4,8 @@ import UpdateHeaderForm from './UpdateHeaderForm';
 
 import HeaderList from "./HeaderList";
 import { useSelector, useDispatch  } from 'react-redux';
-import { fetchPersons } from "../../../actions/fetchPosts"
+import { fetchPersons } from "../../../actions/fetchPosts";
+import { fetchMenu } from "../../../actions/fetchMenu";
 
 
 export default function AdminHeader() {
@@ -14,9 +15,9 @@ const [showUpdate, setShowUpdate] = useState(false);
 const [updateText, setUpdateText] = useState({});
 
 const dispatch = useDispatch();
-const counter = useSelector((state) => state);
-console.log(counter);
 
+const menuList = useSelector((state) => state.menuData.menu);
+console.log(menuList);
 
 useEffect(() => {
   if(navText.length > 10) {
@@ -25,8 +26,8 @@ useEffect(() => {
 },[navText]);
 
 useEffect(() => {
-  console.log("reached here")
   dispatch(fetchPersons())
+  dispatch(fetchMenu())
 },[]);
 
 const textChange = (e) => {
@@ -69,25 +70,17 @@ const submitUpdateForm = (updatedNavText,key) => {
 
   updatedNavData[key] = updatedNavText;
   
-  // const updatedArray = updatedNavData.map((updatedNavDatas, index) => {
-  //   if(index === key) {
-  //     return updatedNavText; 
-  //   }
-  //   return updatedNavDatas
-  // })
-  
   setNavList(updatedNavData);
   setShowUpdate(false);
 
 }
-
 
   return (
     <section className="admin-header container">
         <h1>This is admin Header</h1>
         {!showUpdate && <HeaderForm textChange={textChange} submitData={submitData}/>}
         { showUpdate && <UpdateHeaderForm setShowUpdate={setShowUpdate} updateText={updateText} submitUpdateForm={submitUpdateForm}/> }
-        <HeaderList navList={navList} deleteNav={deleteNav} updateNav={updateNav}/>
+        <HeaderList navList={menuList} deleteNav={deleteNav} updateNav={updateNav}/>
     </section>
   );
 }
