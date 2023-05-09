@@ -3,6 +3,9 @@ import HeaderForm from './HeaderForm';
 import UpdateHeaderForm from './UpdateHeaderForm';
 
 import HeaderList from "./HeaderList";
+import { useSelector, useDispatch  } from 'react-redux';
+import { fetchPersons } from "../../../actions/fetchPosts"
+
 
 export default function AdminHeader() {
 const [navList, setNavList] = useState(['test1','test2']);
@@ -10,12 +13,21 @@ const [navText, setNavText] = useState('');
 const [showUpdate, setShowUpdate] = useState(false);
 const [updateText, setUpdateText] = useState({});
 
+const dispatch = useDispatch();
+const counter = useSelector((state) => state);
+console.log(counter);
+
 
 useEffect(() => {
   if(navText.length > 10) {
     console.log("cannot be more than 10")
   }
 },[navText]);
+
+useEffect(() => {
+  console.log("reached here")
+  dispatch(fetchPersons())
+},[]);
 
 const textChange = (e) => {
   setNavText(e.target.value);
