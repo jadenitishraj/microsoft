@@ -3,8 +3,6 @@ import { useState, useEffect } from "react";
 export default function MainNav() {
   const [mainMenu, setMainMenu] = useState(["Microsoft365", "Teams"]);
 
-  console.log(mainMenu);
-
   return (
     <nav className="main-nav container">
       <img
