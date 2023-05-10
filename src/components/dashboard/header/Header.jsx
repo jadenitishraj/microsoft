@@ -5,7 +5,7 @@ import UpdateHeaderForm from './UpdateHeaderForm';
 import HeaderList from "./HeaderList";
 import { useSelector, useDispatch  } from 'react-redux';
 import { fetchPersons } from "../../../actions/fetchPosts";
-import { fetchMenu } from "../../../actions/fetchMenu";
+import { fetchMenu, addMenu, deleteMenu } from "../../../actions/fetchMenu";
 
 
 export default function AdminHeader() {
@@ -17,11 +17,9 @@ const [updateText, setUpdateText] = useState({});
 const dispatch = useDispatch();
 
 const menuList = useSelector((state) => state.menuData.menu);
-console.log(menuList);
 
 useEffect(() => {
   if(navText.length > 10) {
-    console.log("cannot be more than 10")
   }
 },[navText]);
 
@@ -34,25 +32,30 @@ const textChange = (e) => {
   setNavText(e.target.value);
 }
 
-const submitData = () => {
+const submitData = async() => {
   if(navText.length) {
-    const updatedNavData = [...navList, navText];
-    setNavList(updatedNavData);
+    // const updatedNavData = [...navList, navText];
+    // setNavList(updatedNavData);
+    
+    dispatch(addMenu({"menu_name": navText}));
   } else {
     alert("navtext cannot be empty")
   }
 }
 
-const deleteNav = (indexData) => {
-  const updatedNavData = [...navList];
-  const deletedArray = updatedNavData.filter((updatedNavDatas, index) => {
-    if(indexData === index) {
-      return false; //delete
-    }
-    return true
-  })
+const deleteNav = (id) => {
 
-  setNavList(deletedArray);
+
+  dispatch(deleteMenu(id))
+  // const updatedNavData = [...navList];
+  // const deletedArray = updatedNavData.filter((updatedNavDatas, index) => {
+  //   if(indexData === index) {
+  //     return false; //delete
+  //   }
+  //   return true
+  // })
+
+  // setNavList(deletedArray);
 
 }
 

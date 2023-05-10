@@ -1,7 +1,6 @@
 
 export default function HeaderList(props) {
 
-    console.log(props.navList);
 
     return (
         <ul>
