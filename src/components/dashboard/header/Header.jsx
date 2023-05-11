@@ -61,16 +61,18 @@ const deleteNav = (id) => {
 
 const updateNav = (indexData, navListData) => {
   setShowUpdate(true);
-  const updateJson = {...updateText};
-  updateJson.key = indexData;
-  updateJson.value = navListData;
-  setUpdateText(updateJson);
+//   const updateJson = {...updateText};
+//   updateJson.key = indexData;
+//   updateJson.value = navListData;
+//   setUpdateText(updateJson);
+  
+  dispatch(updateMenu(indexData));
 }
 
 
 const submitUpdateForm = (updatedNavText,key) => {
   const updatedNavData = [...navList];
-
+//const updateNavData=[...]
   updatedNavData[key] = updatedNavText;
   
   setNavList(updatedNavData);
