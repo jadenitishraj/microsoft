@@ -1,7 +1,20 @@
 import { useState, useEffect } from "react";
+import { useSelector, useDispatch  } from 'react-redux';
+import {fetchMenu} from '../../actions/fetchMenu'
 
 export default function MainNav() {
-  const [mainMenu, setMainMenu] = useState(["Microsoft365", "Teams"]);
+  
+  const dispatch = useDispatch(); 
+
+  useEffect(() => {
+    dispatch(fetchMenu())
+  },[]);
+
+  const mainMenu = useSelector((state) => state.menuData.menu);
+
+
+
+  
 
   return (
     <nav className="main-nav container">
@@ -14,7 +27,7 @@ export default function MainNav() {
       <ul className="main-menu">
         {mainMenu.map((mainMenuData) => (
           <li>
-            <a href="#">{mainMenuData}</a>
+            <a href="#">{mainMenuData.menu_name}</a>
           </li>
         ))}
       </ul>

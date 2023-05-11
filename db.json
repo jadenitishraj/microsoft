@@ -15,16 +15,16 @@
   ],
   "menu": [
     {
-      "menu_name": "dssdsddsd dssdsd dsssd",
-      "id": 12
+      "menu_name": "About us",
+      "id": 1
     },
     {
-      "menu_name": "dfsdfsdfdsf",
-      "id": 13
+      "menu_name": "Contact Us",
+      "id": 2
     },
     {
-      "menu_name": "dfsdfsdfdsf dfsdfdfsd",
-      "id": 14
+      "menu_name": "Home Page",
+      "id": 3
     }
   ],
   "profile": {

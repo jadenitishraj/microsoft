@@ -34,6 +34,20 @@ export default function (state = initialState, action) {
         ...state,
         menu: deletedArray
       };
+      case 'UPDATE_MENU':
+        const existingMenuData = [...state.menu];   // copy
+
+        const updatedMenuData = existingMenuData.map((data) => {
+          if(action.payload.id === data.id) {
+            return action.payload;    // {id:25, menu_name:Aboutus 2}
+          }
+          return data
+        });
+
+        return {
+          ...state,
+          menu: updatedMenuData
+        };
   }
 
 

@@ -5,17 +5,16 @@ import UpdateHeaderForm from './UpdateHeaderForm';
 import HeaderList from "./HeaderList";
 import { useSelector, useDispatch  } from 'react-redux';
 import { fetchPersons } from "../../../actions/fetchPosts";
-import { fetchMenu, addMenu, deleteMenu } from "../../../actions/fetchMenu";
+import { fetchMenu, addMenu, deleteMenu, updateMenu } from "../../../actions/fetchMenu";
 
 
 export default function AdminHeader() {
-const [navList, setNavList] = useState(['test1','test2']);
+// const [navList, setNavList] = useState(['test1','test2']);
 const [navText, setNavText] = useState('');
 const [showUpdate, setShowUpdate] = useState(false);
 const [updateText, setUpdateText] = useState({});
 
 const dispatch = useDispatch();
-
 const menuList = useSelector((state) => state.menuData.menu);
 
 useEffect(() => {
@@ -68,13 +67,20 @@ const updateNav = (indexData, navListData) => {
 }
 
 
-const submitUpdateForm = (updatedNavText,key) => {
-  const updatedNavData = [...navList];
+const submitUpdateForm = (updatedNavText,id) => {
 
-  updatedNavData[key] = updatedNavText;
+  console.log(updatedNavText);
+  console.log(id);
+
+  dispatch(updateMenu({"menu_name": updatedNavText}, id));
+
+
+  // const updatedNavData = [...navList];
+
+  // updatedNavData[key] = updatedNavText;
   
-  setNavList(updatedNavData);
-  setShowUpdate(false);
+  // setNavList(updatedNavData);
+  // setShowUpdate(false);
 
 }
 

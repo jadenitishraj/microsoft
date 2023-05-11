@@ -16,6 +16,8 @@ export const addMenu = (data) => (dispatch) => {
   const url = 'http://localhost:3004/menu';
   // const data = { "body": "some comment1234", "postId": 5 };
 
+  console.log(data);
+
   fetch(url, {
     method: 'POST',
     headers: {
@@ -55,5 +57,30 @@ export const deleteMenu = (id) => (dispatch) => {
   .catch(error => {
     console.error('Error:', error);
   });
+};
+
+
+export const updateMenu = (updatedText, id) => (dispatch) => {
+  const url = `http://localhost:3004/menu/${id}`;
+  // const data = { "body": "some comment1234", "postId": 5 };
+
+  fetch(url, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(updatedText)
+  })
+    .then(response => response.json())
+    .then(result => {
+
+      dispatch({
+        type: "UPDATE_MENU",
+        payload: result
+      })
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
 };
 
