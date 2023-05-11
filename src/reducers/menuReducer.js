@@ -34,6 +34,12 @@ export default function (state = initialState, action) {
         ...state,
         menu: deletedArray
       };
+      
+       case 'UPDATE_MENU':
+const updatemenuitem= [..state.menu]
+const selectedmenuitem = updatemenuitem.filter((item)=>{
+  if(item.id === action.payload){
+    return item
   }
 
 
