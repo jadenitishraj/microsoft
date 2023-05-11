@@ -27,6 +27,22 @@
       "id": 3
     }
   ],
+  "productlinks" :[{
+    "linkname": "Choose your Microsoft 365 1",
+    "id": 1
+  },
+  {
+    "linkname": "Choose your Microsoft 365 2",
+    "id": 2
+  },
+  {
+    "linkname": "Choose your Microsoft 365 3",
+    "id": 3
+  },
+  {
+    "linkname": "Choose your Microsoft 365 4",
+    "id": 4
+  }],
   "profile": {
     "name": "typicode"
   }
