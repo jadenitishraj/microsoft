@@ -77,7 +77,7 @@ const submitUpdateForm = (updatedNavText,key) => {
   
 //   setNavList(updatedNavData);
 //   setShowUpdate(false);
-dispatch(updateMenu(updatedNavTex))
+dispatch(updateMenu(updatedNavText))
 }
 
   return (
