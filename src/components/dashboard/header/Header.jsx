@@ -84,7 +84,10 @@ const submitUpdateForm = (updatedNavText,key) => {
     <section className="admin-header container">
         <h1>This is admin Header</h1>
         {!showUpdate && <HeaderForm textChange={textChange} submitData={submitData}/>}
-        { showUpdate && <UpdateHeaderForm setShowUpdate={setShowUpdate} updateText={updateText} submitUpdateForm={submitUpdateForm}/> }
+      //  { showUpdate && <UpdateHeaderForm setShowUpdate={setShowUpdate} updateText={updateText} submitUpdateForm={submitUpdateForm}/> }
+  //Added below line
+  { showUpdate && <UpdateHeaderForm setShowUpdate={setShowUpdate} updateText={dispatch(updateMenu(indexData))} submitUpdateForm={submitUpdateForm}/> }
+   
         <HeaderList navList={menuList} deleteNav={deleteNav} updateNav={updateNav}/>
     </section>
   );
