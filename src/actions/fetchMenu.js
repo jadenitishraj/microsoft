@@ -60,8 +60,7 @@ export const deleteMenu = (id) => (dispatch) => {
 //Update menu action file:
 export const updateMenu = (id) => (dispatch) => {
   const url = `http://localhost:3004/menu/${id}`;
-  // const data = { "body": "some comment1234", "postId": 5 };
-
+  
   fetch(url, {
     method: 'PUT',
   })
