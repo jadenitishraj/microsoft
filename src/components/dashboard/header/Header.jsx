@@ -71,13 +71,13 @@ const updateNav = (indexData, navListData) => {
 
 
 const submitUpdateForm = (updatedNavText,key) => {
-  const updatedNavData = [...navList];
-//const updateNavData=[...]
-  updatedNavData[key] = updatedNavText;
+//   const updatedNavData = [...navList];
+// //const updateNavData=[...]
+//   updatedNavData[key] = updatedNavText;
   
-  setNavList(updatedNavData);
-  setShowUpdate(false);
-
+//   setNavList(updatedNavData);
+//   setShowUpdate(false);
+dispatch(updateMenu(updatedNavTex))
 }
 
   return (
