@@ -85,7 +85,7 @@ export default function Productlinksadmin() {
     const dispatch = useDispatch();
     const productlinklist = useSelector((state) => state.productlinkData.product_links);
 
-    const [productitem, setProductitem] = useState({ linkname: "",img: "" });
+    const [productitem, setProductitem] = useState({});
 
     useEffect(() => {
         dispatch(fetchproductlinks())
@@ -104,7 +104,7 @@ export default function Productlinksadmin() {
     //text data
     const handledata = (e) => {
         console.log(e.target.value)
-        setProductitem({ ...productitem, linkname: e.target.value })
+        setProductitem({ linkname: e.target.value,img:'' })
         console.log(productitem)
     }
 
@@ -116,7 +116,7 @@ export default function Productlinksadmin() {
     return (
         <div>
 
-            <TextField type="text" variant="standard" value={productitem.linkname} onChange={handledata} />&nbsp;
+            <TextField type="text" variant="standard" onChange={handledata} />&nbsp;
             <Button onClick={uploadthedata} variant="contained" color="primary"> Submit </Button>
 
             <br />
@@ -124,11 +124,13 @@ export default function Productlinksadmin() {
             <h2>Get Productlinks data</h2>
 
             {
-                productlinklist &&
+             productlinklist &&
                 productlinklist.map((item) => {
+   console.log(item)
                     return (
                         <ul>
-                            <li key={item.id} >{item.linkname}&nbsp;
+                            <li key={item?.id} >{item?.linkname}&nbsp;
+                            {/* <li> 'fvd' */}
                                 <Button size="small" variant="contained" color="secondary">Update</Button>
                                 {/* <Button size="small" variant="contained" color="warning">Delete</Button> */}
                                 <Button size="small" variant="contained" color="warning" onClick={()=>{deleteitem(item.id)}}>Delete</Button>
