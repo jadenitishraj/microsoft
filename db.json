@@ -15,15 +15,24 @@
   ],
   "menu": [
     {
-      "menu_name": "About us",
+      "menu_name": "Whats New",
+      "id": 1
+    }
+  ],
+  "footer-heading": [
+    {
+      "heading": "fdsdfsdfsd",
+      "links": [],
       "id": 1
     },
     {
-      "menu_name": "Contact Us",
+      "heading": "fsdfsdfsd",
+      "links": [],
       "id": 2
     },
     {
-      "menu_name": "Home Page",
+      "heading": "dfsdfdfdfdf",
+      "links": [],
       "id": 3
     }
   ],
