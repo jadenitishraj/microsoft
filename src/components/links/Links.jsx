@@ -1,4 +1,10 @@
 export default function Links() {
+
+  const Footerlinks ={
+    Whats_new:["Surface Duo","Surface Laptop Go"],
+    
+
+  }
   return (
     <section className="links container">
       <div className="links-inner">

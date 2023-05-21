@@ -54,3 +54,29 @@ export const deleteproductlinks = (id) => (dispatch) => {
 
 
 }
+
+
+export const updateproductlinkslist = (updatedValue,id) => (dispatch) => {
+
+    console.log(updatedValue,id)
+
+    fetch(`http://localhost:3004/productlinks/${id}`, {
+        method: "PUT",
+        headers:{'Content-Type': 'application/json'},
+        body: JSON.stringify(updatedValue)
+      
+
+    }
+    )
+        .then((response) => response.json() )
+        .then((result) => {
+            console.log(result)
+            dispatch({
+                type: "UPDATE_productitem",
+                payload: result
+            })
+        })
+
+
+
+}
