@@ -12,7 +12,6 @@ const initialState = {
   
     switch (action.type) {
       case 'FOOTER_HEADING_LOAD':
-        console.log(action);
         return {
           ...state,
           footerHeading: action.payload

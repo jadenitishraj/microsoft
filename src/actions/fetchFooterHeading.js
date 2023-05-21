@@ -16,7 +16,6 @@ export const addFooterHeading = (data) => (dispatch) => {
   const url = 'http://localhost:3004/footer-heading';
   // const data = { "body": "some comment1234", "postId": 5 };
 
-  console.log(data);
 
   fetch(url, {
     method: 'POST',
@@ -66,6 +65,31 @@ export const updateFooterHeading = (updatedText, id) => (dispatch) => {
 
   fetch(url, {
     method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(updatedText)
+  })
+    .then(response => response.json())
+    .then(result => {
+
+      dispatch({
+        type: "UPDATE_FOOTER_HEADING",
+        payload: result
+      })
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+};
+
+
+export const updateFooterHeadingPatch = (updatedText, id) => (dispatch) => {
+  const url = `http://localhost:3004/footer-heading/${id}`;
+  // const data = { "body": "some comment1234", "postId": 5 };
+
+  fetch(url, {
+    method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'
     },
