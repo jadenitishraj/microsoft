@@ -4,7 +4,7 @@ import { fetchproductlinks } from "../../../actions/fetchproductlinks";
 import { addproductlinks, deleteproductlinks, updateproductlinkslist } from "../../../actions/fetchproductlinks"
 import { Button, TextField } from '@mui/material';
 
-import ProductForm from './ProductForm'
+
 import ProductupdateForm from './ProductupdateForm'
 
 export default function Productlinksadmin() {
@@ -134,7 +134,7 @@ console.log(item.linkname,item.img,item.id)
             }
 
             <br />
-            {<ProductForm updatefunction={updatefunction} />}
+          
             {displayupdateform && <ProductupdateForm edititem={edititem}  cancelItem={cancelItem} setCancelItem={setCancelItem}  submitupdateddata={submitupdateddata}/>}
         </div>
 
