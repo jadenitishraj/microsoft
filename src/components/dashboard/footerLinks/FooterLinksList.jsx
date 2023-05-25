@@ -2,16 +2,6 @@
 export default function FooterLinksList(props) {
 
     return (
-        // <ul>
-        //     {
-        //         props.navList.length > 0 && props.navList.map((navListData, index) => (
-        //             <li key={navListData.id}>{navListData.heading}{' '} <button onClick={() => props.deleteNav(navListData.id)}>Delete</button>
-        //                 {' '} <button onClick={() => props.updateNav(navListData.id, navListData.heading)}>Update</button>
-        //             </li>
-        //         ))
-        //     }
-        // </ul>
-
         <table>
             <tr>
                 <th>Link Name</th>
@@ -23,13 +13,13 @@ export default function FooterLinksList(props) {
 
             {
                 props.footerData.map((footer) => (
-                    footer.links.map((linksData) => (
+                    footer.links.map((linksData, index) => (
                         <tr>
-                        <td>{linksData.name}</td>
-                        <td>{linksData.link}</td>
-                        <td>{footer.heading}</td>
-                        <td><button>Edit</button></td>
-                        <td><button>Delete</button></td>
+                        <td>{linksData?.name}</td>
+                        <td>{linksData?.link}</td>
+                        <td>{footer?.heading}</td>
+                        <td><button onClick={() => props.updateFooterLinks(index, footer.id)}>Edit</button></td>
+                        <td><button onClick={() => props.deleteFooterLink(index, footer.id)}>Delete</button></td>
                     </tr>
                     ))
                 ))

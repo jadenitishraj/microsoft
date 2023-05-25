@@ -32,12 +32,7 @@
     },
     {
       "heading": "dfsdfdfdfdf",
-      "links": [
-        {
-          "name": "some stuff",
-          "link": "7"
-        }
-      ],
+      "links": [],
       "id": 3
     },
     {
@@ -67,31 +62,20 @@
     },
     {
       "heading": "some stuff",
-      "links": [],
+      "links": [
+        {
+          "name": "great",
+          "link": "facebook.com"
+        }
+      ],
       "id": 9
     },
     {
       "heading": "some stuff",
       "links": [
         {
-          "name": "testing12345",
-          "link": "7"
-        },
-        {
-          "name": "testing12345fsd fsdsd f",
-          "link": "7"
-        },
-        {
-          "name": "testing12345fsd fsdsd f",
-          "link": "7"
-        },
-        {
-          "name": "testing12345fsd fsdsd f",
-          "link": "7"
-        },
-        {
-          "name": "laptops",
-          "link": "http://laptops.com"
+          "name": "education12",
+          "link": "google12"
         }
       ],
       "id": 10

@@ -1,14 +1,23 @@
-import {useState} from 'react';
+import { useState } from 'react';
+
+
 
 export default function UpdateFooterLinksForm(props) {
-    const [updatedNavText, setUpdatedNavText] = useState('');
+  const [name, setName] = useState('');
+  const [link, setLink] = useState('');
 
-    return (
-          <div className='form-data'>
-            <input type="text" onChange={(e) => setUpdatedNavText(e.target.value)} defaultValue={props.updateText.value}></input>
-            <button onClick={() => props.submitUpdateForm(updatedNavText, props.updateText.key)}>Update</button>
-            <button onClick={() => props.setShowUpdate(false)}>Cancel</button>
-          </div>
-    );
-  }
-  
+  console.log(name)
+  console.log(link)
+
+  return (
+    <div className='form-data'>
+      <span>{props.selectedHeading.heading}</span>
+      {' '}
+      <input type="text" defaultValue={props.selectedLink.name}  onChange={(e) => setName(e.target.value)} placeholder="enter link name"></input>
+      {' '}
+      <input type="text" defaultValue={props.selectedLink.link}  onChange={(e) => setLink(e.target.value)} placeholder="enter url"></input>
+      {' '}
+      <button onClick={() => props.submitUpdateForm(name, link, props.selectedHeading.id, props.linkIndex)}>Update</button>
+    </div>
+  );
+}
