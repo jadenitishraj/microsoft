@@ -64,16 +64,18 @@ const deleteNav = (id) => {
 const updateNav = (indexData, navListData) => {
   setShowUpdate(true);
   const updateJson = {...updateText};
+
+
+
   updateJson.key = indexData;
   updateJson.value = navListData;
+
   setUpdateText(updateJson);
 }
 
 
 const submitUpdateForm = (updatedNavText,id) => {
 
-  console.log(updatedNavText);
-  console.log(id);
 
   
   dispatch(updateFooterHeading({

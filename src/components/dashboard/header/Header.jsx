@@ -69,8 +69,6 @@ const updateNav = (indexData, navListData) => {
 
 const submitUpdateForm = (updatedNavText,id) => {
 
-  console.log(updatedNavText);
-  console.log(id);
 
   dispatch(updateMenu({"menu_name": updatedNavText}, id));
 

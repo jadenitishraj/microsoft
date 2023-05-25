@@ -16,7 +16,6 @@ export const addMenu = (data) => (dispatch) => {
   const url = 'http://localhost:3004/menu';
   // const data = { "body": "some comment1234", "postId": 5 };
 
-  console.log(data);
 
   fetch(url, {
     method: 'POST',
