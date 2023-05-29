@@ -72,7 +72,7 @@ dispatch(UpdatedataHomecards(u,field))
                         //     <li>{z.Contentlinkdata}<button onClick={() => deletedata(z, 'Contentlinkdata')}>Delete</button> <button onClick={() => updatedata(z, 'Contentlinkdata')}>updatedata</button></li> 
                         //     </div>
                               <div key={index}>
-                        {z.urldata ?  (<li>{z.urldata}<button onClick={() => deletedata(z, 'urldata')}>Delete</button></li>): ''}
+                           {z.urldata ?  (<li>{z.urldata}<button onClick={() => deletedata(z, 'urldata')}>Delete</button></li>): ''}
                            {z.Headingdata ?  (<li>{z.Headingdata}<button onClick={() => deletedata(z, 'Headingdata')}>Delete</button></li>): ''}   
                            {z.Contentdata ?  (<li>{z.Contentdata}<button onClick={() => deletedata(z, 'Contentdata')}>Delete</button></li>): ''}   
                            {z.Contentlinkdata ?  (<li>{z.Contentlinkdata}<button onClick={() => deletedata(z, 'Contentlinkdata')}>Delete</button></li>): ''}      

@@ -100,16 +100,21 @@ export default function HomeCards() {
 
     <div>
       <section className="home-cards container">
-      {homecardslistdata.map((item, index) => (
-        <div key={index}>
-          <img src={item.urldata} alt="" />
-          <h3>{item.Headingdata}</h3>
-          <p>{item.Contentdata}</p>
-          <a href="#">{item.Contentlinkdata}{" "}</a>
-        </div>
-      ))}
+        {homecardslistdata && homecardslistdata.map((item, index) => {
+          if (item.HomeCardsType === 'Type1') {
+            return (
+            <div key={index}>
+              <img src={item.urldata} alt="" />
+              <h3>{item.Headingdata}</h3>
+              <p>{item.Contentdata}</p>
+              <a href="#">{item.Contentlinkdata}{" "}</a>
+            </div>
+            )
+          }
+        })
+        }
       </section>
-      
+
     </div>
   );
 }

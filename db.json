@@ -70,14 +70,6 @@
       "id": 50
     },
     {
-      "urldata": null,
-      "Headingdata": null,
-      "Contentdata": null,
-      "Contentlinkdata": null,
-      "HomeCardsType": "Type1",
-      "id": 51
-    },
-    {
       "urldata": "https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-Bing-AI-No-Text?wid=297&hei=167&fit=crop",
       "Headingdata": "Introducing a new Bing",
       "Contentdata": "Your AI-powered copilot for the web. Ask questions. Chat to refine           results. Get comprehensive answers and creative inspiration.",
@@ -100,6 +92,38 @@
       "Contentlinkdata": "Learn More",
       "HomeCardsType": "Type1",
       "id": 54
+    },
+    {
+      "urldata": "https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-Surface-Laptop-5-M1-Platinum-01-1?wid=297&hei=167&fit=crop",
+      "Headingdata": "Surface Laptop 5",
+      "Contentdata": "Make life easier with the Samsung Galaxy Note10 Essentials Bundle . Buy the Note10 phone and get up to $100",
+      "Contentlinkdata": "Learn More",
+      "HomeCardsType": "Type2",
+      "id": 55
+    },
+    {
+      "urldata": "https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-Surface-Laptop-5-M1-Platinum-01-1?wid=297&hei=167&fit=crop",
+      "Headingdata": "Surface Laptop 52",
+      "Contentdata": "Make life easier with the Samsung Galaxy Note10 Essentials Bundle . Buy the Note10 phone and get up to $100",
+      "Contentlinkdata": "Learn More",
+      "HomeCardsType": "Type2",
+      "id": 56
+    },
+    {
+      "urldata": "https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-Surface-Laptop-5-M1-Platinum-01-1?wid=297&hei=167&fit=crop",
+      "Headingdata": "Surface Laptop 52",
+      "Contentdata": "Make life easier with the Samsung Galaxy Note10 Essentials Bundle . Buy the Note10 phone and get up to $100",
+      "Contentlinkdata": "Learn More",
+      "HomeCardsType": "Type2",
+      "id": 57
+    },
+    {
+      "urldata": "https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Content-Card-Surface-Laptop-5-M1-Platinum-01-1?wid=297&hei=167&fit=crop",
+      "Headingdata": "Surface Laptop 52",
+      "Contentdata": "Make life easier with the Samsung Galaxy Note10 Essentials Bundle . Buy the Note10 phone and get up to $100",
+      "Contentlinkdata": "Learn More",
+      "HomeCardsType": "Type2",
+      "id": 58
     }
   ]
 }
