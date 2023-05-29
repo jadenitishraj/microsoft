@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { Button, Select, MenuItem, TextField, InputLabel } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-
-
-import { Homecards, PostHomecards, DeleteHomecards,UpdatedataHomecards } from '../../actions/Homecards'
+// import { UpdateHomecardsform } from "./Updatehomecardsform";
+import { Homecards, PostHomecards, DeleteHomecards, UpdatedataHomecards } from '../../actions/Homecards'
 
 export default function HomeCardsAdmin() {
     const homecardslistdata = useSelector((state) => state.Homecardslist.Homecardslistarray);
     const dispatch = useDispatch();
 
     const [homecardslist1, setHomecardslist1] = useState({})
-    
+    const [updatedatatext, setUpdatedatatext] = useState({});
+
 
     useEffect(() => {
         dispatch(Homecards())
@@ -39,20 +39,27 @@ export default function HomeCardsAdmin() {
 
     console.log(homecardslistdata);
 
-    const deletedata = (id, field) => {
+    const deletedata = (id) => {
 
-      
+
         const i = id.id
-        dispatch(DeleteHomecards(i, field))
-      
-        
+        dispatch(DeleteHomecards(i))
+
+
 
     }
 
-    const updatedata = (id, field)=>{
-const u = id.id;
-dispatch(UpdatedataHomecards(u,field))
-        
+    const updatedata = (id, field) => {
+        const u = id.id;
+
+        console.log(id)
+        setUpdatedatatext({
+            "url_data": id.url_data
+        });
+
+        console.log(updatedatatext);
+        dispatch(UpdatedataHomecards(u, field))
+
     }
 
     return (
@@ -65,18 +72,20 @@ dispatch(UpdatedataHomecards(u,field))
                     if (z.HomeCardsType === 'Type1') {
 
                         return (
-                        //     <div key={index}>
-                        //         <li>{z.urldata}<button onClick={() => deletedata(z, 'urldata')}>Delete</button> <button onClick={() => updatedata(z, 'urldata')}>updatedata</button></li>
-                        //      <li>{z.Headingdata}<button onClick={() => deletedata(z, 'Headingdata')}>Delete</button> <button onClick={() => updatedata(z, 'Headingdata')}>updatedata</button></li>
-                        //    <li>{z.Contentdata}<button onClick={() => deletedata(z, 'Contentdata')}>Delete</button> <button onClick={() => updatedata(z, 'Contentdata')}>updatedata</button></li>
-                        //     <li>{z.Contentlinkdata}<button onClick={() => deletedata(z, 'Contentlinkdata')}>Delete</button> <button onClick={() => updatedata(z, 'Contentlinkdata')}>updatedata</button></li> 
-                        //     </div>
-                              <div key={index}>
-                           {z.urldata ?  (<li>{z.urldata}<button onClick={() => deletedata(z, 'urldata')}>Delete</button></li>): ''}
-                           {z.Headingdata ?  (<li>{z.Headingdata}<button onClick={() => deletedata(z, 'Headingdata')}>Delete</button></li>): ''}   
-                           {z.Contentdata ?  (<li>{z.Contentdata}<button onClick={() => deletedata(z, 'Contentdata')}>Delete</button></li>): ''}   
-                           {z.Contentlinkdata ?  (<li>{z.Contentlinkdata}<button onClick={() => deletedata(z, 'Contentlinkdata')}>Delete</button></li>): ''}      
-                         </div>
+
+                            <div key={index}>
+
+                                <li> <strong>img url</strong> {z.urldata} </li>
+
+                                <li>   <strong>Headingdata</strong> {z.Headingdata} </li>
+
+                                <li>  <strong>Description</strong> {z.Contentdata}</li>
+
+                                <li> <strong>Link</strong> {z.Contentlinkdata} </li>
+
+                                <button onClick={() => deletedata(z)}>Delete</button>
+                            
+                            </div>
                         )
                     }
                 })
@@ -92,11 +101,16 @@ dispatch(UpdatedataHomecards(u,field))
 
                         return (
                             <div key={index}>
-                                
-                              {z.urldata ?  (<li>{z.urldata}<button onClick={() => deletedata(z, 'urldata')}>Delete</button></li>): ''}
-                              {z.Headingdata ?  (<li>{z.Headingdata}<button onClick={() => deletedata(z, 'Headingdata')}>Delete</button></li>): ''}   
-                              {z.Contentdata ?  (<li>{z.Contentdata}<button onClick={() => deletedata(z, 'Contentdata')}>Delete</button></li>): ''}   
-                              {z.Contentlinkdata ?  (<li>{z.Contentlinkdata}<button onClick={() => deletedata(z, 'Contentlinkdata')}>Delete</button></li>): ''}      
+                                <ol> <strong>img url</strong> {z.urldata} </ol>
+
+                                <ol>   <strong>Headingdata</strong> {z.Headingdata} </ol>
+
+                                <ol>  <strong>Description</strong> {z.Contentdata}</ol>
+
+                                <ol> <strong>Link</strong> {z.Contentlinkdata} </ol>
+
+                                <button onClick={() => deletedata(z)}>Delete</button>
+                              
                             </div>
                         )
                     }
@@ -172,6 +186,7 @@ dispatch(UpdatedataHomecards(u,field))
 
 
             <h2>Post the data textfield</h2>
+
             <TextField variant="outlined" label="urldata" name="urldata" onChange={onchangedata} /> <br />
             <br />
             <TextField variant="outlined" label="Headingdata" name="Headingdata" onChange={onchangedata} /> <br />
@@ -195,6 +210,8 @@ dispatch(UpdatedataHomecards(u,field))
 
 
         </>
+
+
     )
 
 

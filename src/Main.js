@@ -7,6 +7,7 @@ import Productlinksadmin  from "./components/productLinks/Productlinks/Productli
 
 import HomeCardsAdmin  from "./components/homeCards/HomeCardsAdmin";
 
+import Admin from "./components/Admin/Admin"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 export default function Main() {
@@ -19,8 +20,9 @@ export default function Main() {
           <Route exact path="/admin-header" element={<AdminHeader />} />
           <Route exact path="/admin-productlinks" element={<Productlinksadmin />} />
           <Route exact path="/admin-homecards" element={<HomeCardsAdmin />} />
+          <Route exact path="/admin" element={<Admin />} />
         </Routes>
       </div>
     </Router>
-  );
+  )
 }

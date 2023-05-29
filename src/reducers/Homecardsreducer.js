@@ -22,28 +22,21 @@ export default (state = initialState, action) => {
 
    } else if (action.type === "DELETE_homecards") {
 
-      console.log(action.payload.field)
-      console.log(action.payload.id)
-      const field =action.payload.field;
-      console.log(field)
-      const ExitingArray = [...state.Homecardslistarray]
-      console.log(ExitingArray)
-      const DeletedItemArray = ExitingArray.map((i) => {
-      if(i.id===action.payload.id){
-         const newitem={...i}
-         console.log(newitem);
-         console.log(newitem[field]);
-        delete newitem[field]
-        console.log(newitem)
-            return newitem
-      }
-      return i
+      console.log(action.payload)
       
+      const ExitingArray = [...state.Homecardslistarray]
+      const deletedarray = ExitingArray.filter((z)=>{
+
+         if(z.id!=action.payload.id){
+            return true;
+         }
+
+         return false;
       })
-    console.log(DeletedItemArray)
+      console.log(deletedarray)
  return {
    ...state,   
-   Homecardslistarray:DeletedItemArray
+   Homecardslistarray:deletedarray
 
  }
 
