@@ -29,3 +29,42 @@ export const PostHomecards=(data)=>(dispatch)=>{
         }
             ) 
 }
+
+export const DeleteHomecards=(id,field)=>(dispatch)=>{
+    console.log(id,field)
+    fetch(`http://localhost:3004/homecardslist/${id}`,{
+        method:'PATCH',
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({[field]:null})
+    })
+        .then(response =>response.json())
+        .then(result=>{
+            console.log(result)
+            dispatch({
+            type:"DELETE_homecards",
+            payload: {id,field}})
+        }
+            ) 
+}
+
+export const UpdatedataHomecards=(id,field)=>(dispatch)=>{
+    console.log(id,field)
+    fetch(`http://localhost:3004/homecardslist/${id}`,{
+        method:'PATCH',
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({[field]:field})
+    })
+        .then(response =>response.json())
+        .then(result=>{
+            console.log(result)
+            dispatch({
+            type:"updatedata_homecards",
+            payload: {id,field}})
+        }
+            ) 
+}
+

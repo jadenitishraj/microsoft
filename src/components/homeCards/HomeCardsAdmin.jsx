@@ -3,23 +3,24 @@ import { Button, Select, MenuItem, TextField, InputLabel } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 
 
-import { Homecards,PostHomecards } from '../../actions/Homecards'
+import { Homecards, PostHomecards, DeleteHomecards,UpdatedataHomecards } from '../../actions/Homecards'
 
 export default function HomeCardsAdmin() {
     const homecardslistdata = useSelector((state) => state.Homecardslist.Homecardslistarray);
     const dispatch = useDispatch();
 
-    const [homecardslist, setHomecardslist] = useState({})
+    const [homecardslist1, setHomecardslist1] = useState({})
+    
 
     useEffect(() => {
         dispatch(Homecards())
     }, [])
 
     const onchangedata = (e) => {
-        console.log(e.target.value)
+
         const { name, value } = e.target
 
-        setHomecardslist((prevState) => ({
+        setHomecardslist1((prevState) => ({
             ...prevState,
             [name]: value
 
@@ -29,84 +30,165 @@ export default function HomeCardsAdmin() {
 
 
 
-    const Submitteddata = () => {
-        console.log(homecardslist);
-        dispatch(Homecards())
-        console.log(homecardslistdata)
-dispatch(PostHomecards(homecardslist));
+    const Submitteddata = (e) => {
+
+        dispatch(PostHomecards(homecardslist1));
 
     }
 
 
-    // const filteredtype1Data = homecardslistdata.filter((i, index) => {
-    //     console.log(i.type1);
-    //     return i.type1
-    // })
-    // const filteredtype2Data = homecardslistdata.filter((i, index) => {
-    //     console.log(i.type1);
-    //     return i.type2
-    // })
+    console.log(homecardslistdata);
 
-console.log(homecardslistdata);
+    const deletedata = (id, field) => {
+
+      
+        const i = id.id
+        dispatch(DeleteHomecards(i, field))
+      
+        
+
+    }
+
+    const updatedata = (id, field)=>{
+const u = id.id;
+dispatch(UpdatedataHomecards(u,field))
+        
+    }
+
     return (
         <>
+            <h2>Data for the Type 1</h2>
+            {
+                homecardslistdata.map((z, index) => {
 
-            <h1>Get HomeCards data</h1>
 
-            <h2>Get HomeCards Type 1 data</h2>
-            
-            {homecardslistdata.map((homecardsitems, index) => (
-                <div key={index}>
-                    { homecardsitems.type1.map((type1data, type1index) => (
-                        <div key={type1index}>
-                            <li>{type1data.Url}</li>
-                            <li>{type1data.Heading}</li>
-                            <li>{type1data.Content}</li>
-                            <li>{type1data.Link}</li>
-                        </div>
-                    ))}
+                    if (z.HomeCardsType === 'Type1') {
 
-                </div>
+                        return (
+                        //     <div key={index}>
+                        //         <li>{z.urldata}<button onClick={() => deletedata(z, 'urldata')}>Delete</button> <button onClick={() => updatedata(z, 'urldata')}>updatedata</button></li>
+                        //      <li>{z.Headingdata}<button onClick={() => deletedata(z, 'Headingdata')}>Delete</button> <button onClick={() => updatedata(z, 'Headingdata')}>updatedata</button></li>
+                        //    <li>{z.Contentdata}<button onClick={() => deletedata(z, 'Contentdata')}>Delete</button> <button onClick={() => updatedata(z, 'Contentdata')}>updatedata</button></li>
+                        //     <li>{z.Contentlinkdata}<button onClick={() => deletedata(z, 'Contentlinkdata')}>Delete</button> <button onClick={() => updatedata(z, 'Contentlinkdata')}>updatedata</button></li> 
+                        //     </div>
+                              <div key={index}>
+                        {z.urldata ?  (<li>{z.urldata}<button onClick={() => deletedata(z, 'urldata')}>Delete</button></li>): ''}
+                           {z.Headingdata ?  (<li>{z.Headingdata}<button onClick={() => deletedata(z, 'Headingdata')}>Delete</button></li>): ''}   
+                           {z.Contentdata ?  (<li>{z.Contentdata}<button onClick={() => deletedata(z, 'Contentdata')}>Delete</button></li>): ''}   
+                           {z.Contentlinkdata ?  (<li>{z.Contentlinkdata}<button onClick={() => deletedata(z, 'Contentlinkdata')}>Delete</button></li>): ''}      
+                         </div>
+                        )
+                    }
+                })
+            }
 
-            ))}
 
-            <h2>Get HomeCards Type 2 data</h2>
-            {homecardslistdata.map((homecardsitems, index) => (
-                // console.log(homecardsitems)
-                <div key={index}>
-                    {homecardsitems.type2.map((type2data, type2index) => (
-                        <div key={type2index}>
-                            <li>{type2data.Url}</li>
-                            <li>{type2data.Heading}</li>
-                            <li>{type2data.Content}</li>
-                            <li>{type2data.Link}</li>
-                        </div>
-                    ))}
+            <h2>Data for the Type 2</h2>
+            {
+                homecardslistdata.map((z, index) => {
 
-                </div>
 
-            ))}
+                    if (z.HomeCardsType === 'Type2') {
+
+                        return (
+                            <div key={index}>
+                                
+                              {z.urldata ?  (<li>{z.urldata}<button onClick={() => deletedata(z, 'urldata')}>Delete</button></li>): ''}
+                              {z.Headingdata ?  (<li>{z.Headingdata}<button onClick={() => deletedata(z, 'Headingdata')}>Delete</button></li>): ''}   
+                              {z.Contentdata ?  (<li>{z.Contentdata}<button onClick={() => deletedata(z, 'Contentdata')}>Delete</button></li>): ''}   
+                              {z.Contentlinkdata ?  (<li>{z.Contentlinkdata}<button onClick={() => deletedata(z, 'Contentlinkdata')}>Delete</button></li>): ''}      
+                            </div>
+                        )
+                    }
+                })
+            }
+
+
+            {/* <h2>Get the type 1 data</h2>
+            {homecardslistdata && homecardslistdata.map((z, index) => {
+                console.log(z);
+                console.log(index);
+                return (
+                    <div key={index}>
+                        {
+                            z?.map((innerdata, innerindex) => {
+                                console.log(innerdata);
+                                if (innerdata?.HomeCardsType === 'Type1') {
+                                    return (
+                                        <div key={innerindex}>
+                                            <li>{innerdata?.urldata}</li  >
+                                            <li>{innerdata?.Headingdata}</li>
+                                            <li>{innerdata?.Contentdata}</li>
+                                            <li>{innerdata?.Contentlinkdata}</li>
+                                        </div>
+                                    )
+                                }
+
+                            })
+                        }
+                    </div>
+                )
+
+
+
+
+
+
+
+
+            })}
+
+
+
+
+            <h2>Get the type 2 data</h2>
+
+            {homecardslistdata?.map((z2, index2) => {
+                console.log(z2);
+
+                return (
+                    <div key={index2}>
+                        {
+                            z2?.map((innerdata2, innerindex2) => {
+                                console.log(innerdata2);
+                                if (innerdata2?.HomeCardsType === 'Type2') {
+                                    return (
+                                        <div key={innerindex2}>
+                                            <li>{innerdata2?.urldata}</li  >
+                                            <li>{innerdata2?.Headingdata}</li>
+                                            <li>{innerdata2?.Contentdata}</li>
+                                            <li>{innerdata2?.Contentlinkdata}</li>
+                                        </div>
+                                    )
+                                }
+
+                            })
+                        }
+                    </div>
+                )
+
+
+            })} */}
 
 
             <h2>Post the data textfield</h2>
-            <TextField variant="outlined" label="urldata" name="urldata" onChange={onchangedata} /> <Button color="secondary">Update</Button> <Button color="success">DELETE</Button><br />
+            <TextField variant="outlined" label="urldata" name="urldata" onChange={onchangedata} /> <br />
             <br />
-            <TextField variant="outlined" label="Headingdata" name="Headingdata" onChange={onchangedata} /> <Button color="secondary">Update</Button>  <Button color="success">DELETE</Button><br />
-            <br />
-
-            <TextField variant="outlined" label="Contentdata" name="Contentdata" onChange={onchangedata} /> <Button color="secondary">Update</Button>  <Button color="success">DELETE</Button><br />
+            <TextField variant="outlined" label="Headingdata" name="Headingdata" onChange={onchangedata} /> <br />
             <br />
 
-            <TextField variant="outlined" label="Contentlinkdata" name="Contentlinkdata" onChange={onchangedata} /> <Button color="secondary">Update</Button> <Button color="success">DELETE</Button><br />
+            <TextField variant="outlined" label="Contentdata" name="Contentdata" onChange={onchangedata} />  <br />
+            <br />
+
+            <TextField variant="outlined" label="Contentlinkdata" name="Contentlinkdata" onChange={onchangedata} /> <br />
 
             <br />
 
             <InputLabel>Homecardselectiontype</InputLabel>
-            <Select label="HomeCardsType">
+            <Select label="HomeCardsType" name="HomeCardsType" onChange={onchangedata} >
                 <MenuItem value="Type1">Type1</MenuItem>
                 <MenuItem value="Type2">Type2</MenuItem>
             </Select><br />
-            <br />
 
             <Button variant="contained" color="secondary" onClick={Submitteddata}>Submit</Button>
 
