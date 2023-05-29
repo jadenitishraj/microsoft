@@ -7,6 +7,7 @@ import menuReducer from "./menuReducer";
 import productlinksReducer from "./productlinksReducer";
 import Homecardsreducer from "./Homecardsreducer";
 
+import footerHeadingReducer from "./footerHeadingReducer";
 
 // Use ES6 object literal shorthand syntax to define the object shape
 export default combineReducers({
@@ -14,5 +15,6 @@ export default combineReducers({
   tests: testReducer,
   menuData: menuReducer,
   productlinkData: productlinksReducer,
-  Homecardslist: Homecardsreducer
+  Homecardslist: Homecardsreducer,
+  footerHeadingData: footerHeadingReducer
 });

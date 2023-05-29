@@ -1,21 +1,22 @@
 import {useState, useEffect} from 'react';
-import HeaderForm from './HeaderForm';
-import UpdateHeaderForm from './UpdateHeaderForm';
+import FooterHeadingForm from './FooterHeadingForm';
+import UpdateFooterHeadingForm from './UpdateFooterHeadingForm';
 
-import HeaderList from "./HeaderList";
+import FooterHeadingList from "./FooterHeadingList";
 import { useSelector, useDispatch  } from 'react-redux';
 import { fetchPersons } from "../../../actions/fetchPosts";
-import { fetchMenu, addMenu, deleteMenu, updateMenu } from "../../../actions/fetchMenu";
+import { fetchFooterHeading, addFooterHeading, deleteFooterHeading, updateFooterHeading } from "../../../actions/fetchFooterHeading";
 
 
-export default function AdminHeader() {
+export default function FooterHeading() {
 // const [navList, setNavList] = useState(['test1','test2']);
 const [navText, setNavText] = useState('');
 const [showUpdate, setShowUpdate] = useState(false);
 const [updateText, setUpdateText] = useState({});
 
 const dispatch = useDispatch();
-const menuList = useSelector((state) => state.menuData.menu);
+const footerHeadingList = useSelector((state) => state.footerHeadingData.footerHeading);
+
 
 useEffect(() => {
   if(navText.length > 10) {
@@ -23,8 +24,7 @@ useEffect(() => {
 },[navText]);
 
 useEffect(() => {
-  dispatch(fetchPersons())
-  dispatch(fetchMenu())
+  dispatch(fetchFooterHeading())
 },[]);
 
 const textChange = (e) => {
@@ -36,7 +36,10 @@ const submitData = async() => {
     // const updatedNavData = [...navList, navText];
     // setNavList(updatedNavData);
     
-    dispatch(addMenu({"menu_name": navText}));
+    dispatch(addFooterHeading(  {
+      heading: navText,
+      links: []
+    },));
   } else {
     alert("navtext cannot be empty")
   }
@@ -45,7 +48,7 @@ const submitData = async() => {
 const deleteNav = (id) => {
 
 
-  dispatch(deleteMenu(id))
+  dispatch(deleteFooterHeading(id))
   // const updatedNavData = [...navList];
   // const deletedArray = updatedNavData.filter((updatedNavDatas, index) => {
   //   if(indexData === index) {
@@ -61,8 +64,12 @@ const deleteNav = (id) => {
 const updateNav = (indexData, navListData) => {
   setShowUpdate(true);
   const updateJson = {...updateText};
+
+
+
   updateJson.key = indexData;
   updateJson.value = navListData;
+
   setUpdateText(updateJson);
 }
 
@@ -70,7 +77,11 @@ const updateNav = (indexData, navListData) => {
 const submitUpdateForm = (updatedNavText,id) => {
 
 
-  dispatch(updateMenu({"menu_name": updatedNavText}, id));
+  
+  dispatch(updateFooterHeading({
+    heading: updatedNavText,
+    links: []
+  }, id));
 
 
   // const updatedNavData = [...navList];
@@ -84,10 +95,10 @@ const submitUpdateForm = (updatedNavText,id) => {
 
   return (
     <section className="admin-header container">
-        <h1>This is admin Header</h1>
-        {!showUpdate && <HeaderForm textChange={textChange} submitData={submitData}/>}
-        { showUpdate && <UpdateHeaderForm setShowUpdate={setShowUpdate} updateText={updateText} submitUpdateForm={submitUpdateForm}/> }
-        <HeaderList navList={menuList} deleteNav={deleteNav} updateNav={updateNav}/>
+        <h1>This Footer Heading Page</h1>
+        {!showUpdate && <FooterHeadingForm textChange={textChange} submitData={submitData}/>}
+        { showUpdate && <UpdateFooterHeadingForm setShowUpdate={setShowUpdate} updateText={updateText} submitUpdateForm={submitUpdateForm}/> }
+        <FooterHeadingList navList={footerHeadingList} deleteNav={deleteNav} updateNav={updateNav}/>
     </section>
   );
 }
