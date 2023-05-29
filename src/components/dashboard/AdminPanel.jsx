@@ -17,7 +17,11 @@ export default function AdminPanel() {
       <div className="container box1">
         <Card className="cards" variant="outlined">
           <Link to="/admin-header"><h1>Header</h1></Link>
-
+         
+        </Card>
+        <Card className="cards" variant="outlined">
+          <Link to="/admin-Productlinks"><h1>Header</h1></Link>
+         
         </Card>
         <Card className="cards" variant="outlined">
           <h1>Showcase</h1>
