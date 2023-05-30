@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import {UpdateHomecardsform } from './UpdateHomecardsform'
 
 
-import { Homecards, PostHomecards, DeleteHomecards, UpdatedataHomecards } from '../../actions/Homecards'
+import { Homecards, PostHomecards, DeleteHomecards, UpdatedataHomecards } from '../../../actions/Homecards'
 import Updateform from './Updateform';
 
 export default function HomeCardsAdmin() {

@@ -93,6 +93,7 @@ export default function HomeCards() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+     
     dispatch(Homecards());
   }, []);
 
