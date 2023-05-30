@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import { Button, Select, MenuItem, TextField, InputLabel } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-// import { UpdateHomecardsform } from "./Updatehomecardsform";
+
+// import {UpdateHomecardsform } from './UpdateHomecardsform'
+
+
 import { Homecards, PostHomecards, DeleteHomecards, UpdatedataHomecards } from '../../actions/Homecards'
+import Updateform from './Updateform';
 
 export default function HomeCardsAdmin() {
     const homecardslistdata = useSelector((state) => state.Homecardslist.Homecardslistarray);
@@ -11,10 +15,23 @@ export default function HomeCardsAdmin() {
     const [homecardslist1, setHomecardslist1] = useState({})
     const [updatedatatext, setUpdatedatatext] = useState({});
 
+    const [showeditbtn, setshoweditbtn] = useState(false);
+    const [Cancelbtn, setCancelbtn] = useState(false);
+
+    const [showeditform, setShoweditform] = useState(false);
+
+    const [editedfield, setEditedfield] = useState('');
+
+
+    const [finalRenderData, setFinalRenderData] = useState([]);
 
     useEffect(() => {
         dispatch(Homecards())
     }, [])
+    useEffect(() => { 
+        setFinalRenderData(homecardslistdata) 
+     
+    }, [homecardslistdata]);
 
     const onchangedata = (e) => {
 
@@ -48,25 +65,32 @@ export default function HomeCardsAdmin() {
 
 
     }
-
-    const updatedata = (id, field) => {
+    const Editdatafn = (id, field, e) => {
         const u = id.id;
-
-        console.log(id)
-        setUpdatedatatext({
-            "url_data": id.url_data
-        });
-
-        console.log(updatedatatext);
-        dispatch(UpdatedataHomecards(u, field))
+        console.log(id, field)
+        setEditedfield(field);
+        setUpdatedatatext(id);
 
     }
 
+    const updatedatafn = (id, editedvalue, efield) => {
+        console.log(id);
+        console.log(editedvalue.target.value);
+        console.log(efield);
+        dispatch(UpdatedataHomecards(id, editedvalue.target.value, efield));
+        setShoweditform(false);
+        setshoweditbtn(false);
+        setCancelbtn(false);
+    }
+
+
     return (
         <>
+            {showeditform ? (<Updateform updatedatatext={updatedatatext} editedfield={editedfield} updatedatafn={updatedatafn} />) : ''}
+
             <h2>Data for the Type 1</h2>
             {
-                homecardslistdata.map((z, index) => {
+                finalRenderData.map((z, index) => {
 
 
                     if (z.HomeCardsType === 'Type1') {
@@ -75,16 +99,28 @@ export default function HomeCardsAdmin() {
 
                             <div key={index}>
 
-                                <li> <strong>img url</strong> {z.urldata} </li>
+                                <li> <strong>img url</strong> {z.urldata} {showeditbtn ? (<button onClick={() => Editdatafn(z, 'urldata')}>Edit</button>) : ''} </li>
 
-                                <li>   <strong>Headingdata</strong> {z.Headingdata} </li>
+                                <li>   <strong>Headingdata</strong> {z.Headingdata}{showeditbtn ? (<button onClick={() => Editdatafn(z, 'Headingdata')}>Edit</button>) : ''} </li>
 
-                                <li>  <strong>Description</strong> {z.Contentdata}</li>
+                                <li>  <strong>Description</strong> {z.Contentdata} {showeditbtn ? (<button onClick={() => Editdatafn(z, 'Contentdata')}>Edit</button>) : ''}</li>
 
-                                <li> <strong>Link</strong> {z.Contentlinkdata} </li>
+                                <li> <strong>Link</strong> {z.Contentlinkdata} {showeditbtn ? (<button onClick={() => Editdatafn(z, 'Contentlinkdata')}>Edit</button>) : ''}</li>
 
                                 <button onClick={() => deletedata(z)}>Delete</button>
-                            
+                                <button onClick={() => {
+                                    setshoweditbtn(true);
+                                    setCancelbtn(true);
+                                    setShoweditform(true);
+                                }}>updatedata</button>
+                                {Cancelbtn ? (<button onClick={()=>{
+                                    setEditedfield(false);
+                                    setshoweditbtn(false);
+                                    setShoweditform(false);
+                                    setCancelbtn(false);
+
+                                }} >Cancel</button>) : ''}
+
                             </div>
                         )
                     }
@@ -94,7 +130,7 @@ export default function HomeCardsAdmin() {
 
             <h2>Data for the Type 2</h2>
             {
-                homecardslistdata.map((z, index) => {
+                finalRenderData.map((z, index) => {
 
 
                     if (z.HomeCardsType === 'Type2') {
@@ -110,81 +146,12 @@ export default function HomeCardsAdmin() {
                                 <ol> <strong>Link</strong> {z.Contentlinkdata} </ol>
 
                                 <button onClick={() => deletedata(z)}>Delete</button>
-                              
+
                             </div>
                         )
                     }
                 })
             }
-
-
-            {/* <h2>Get the type 1 data</h2>
-            {homecardslistdata && homecardslistdata.map((z, index) => {
-                console.log(z);
-                console.log(index);
-                return (
-                    <div key={index}>
-                        {
-                            z?.map((innerdata, innerindex) => {
-                                console.log(innerdata);
-                                if (innerdata?.HomeCardsType === 'Type1') {
-                                    return (
-                                        <div key={innerindex}>
-                                            <li>{innerdata?.urldata}</li  >
-                                            <li>{innerdata?.Headingdata}</li>
-                                            <li>{innerdata?.Contentdata}</li>
-                                            <li>{innerdata?.Contentlinkdata}</li>
-                                        </div>
-                                    )
-                                }
-
-                            })
-                        }
-                    </div>
-                )
-
-
-
-
-
-
-
-
-            })}
-
-
-
-
-            <h2>Get the type 2 data</h2>
-
-            {homecardslistdata?.map((z2, index2) => {
-                console.log(z2);
-
-                return (
-                    <div key={index2}>
-                        {
-                            z2?.map((innerdata2, innerindex2) => {
-                                console.log(innerdata2);
-                                if (innerdata2?.HomeCardsType === 'Type2') {
-                                    return (
-                                        <div key={innerindex2}>
-                                            <li>{innerdata2?.urldata}</li  >
-                                            <li>{innerdata2?.Headingdata}</li>
-                                            <li>{innerdata2?.Contentdata}</li>
-                                            <li>{innerdata2?.Contentlinkdata}</li>
-                                        </div>
-                                    )
-                                }
-
-                            })
-                        }
-                    </div>
-                )
-
-
-            })} */}
-
-
             <h2>Post the data textfield</h2>
 
             <TextField variant="outlined" label="urldata" name="urldata" onChange={onchangedata} /> <br />
@@ -206,7 +173,6 @@ export default function HomeCardsAdmin() {
             </Select><br />
 
             <Button variant="contained" color="secondary" onClick={Submitteddata}>Submit</Button>
-
 
 
         </>

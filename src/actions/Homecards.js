@@ -49,21 +49,21 @@ export const PostHomecards=(data)=>(dispatch)=>{
 //             ) 
 // }
 
-export const UpdatedataHomecards=(id,field)=>(dispatch)=>{
-    console.log(id,field)
+export const UpdatedataHomecards=(id,editedvalue,efield)=>(dispatch)=>{
+    console.log(id,editedvalue,efield)
     fetch(`http://localhost:3004/homecardslist/${id}`,{
         method:'PATCH',
         headers:{
             "Content-Type":"application/json"
         },
-        body: JSON.stringify({[field]:field})
+        body: JSON.stringify({[efield]:editedvalue})
     })
         .then(response =>response.json())
         .then(result=>{
             console.log(result)
             dispatch({
             type:"updatedata_homecards",
-            payload: {id,field}})
+            payload: {id,editedvalue,efield}})
         }
             ) 
 }

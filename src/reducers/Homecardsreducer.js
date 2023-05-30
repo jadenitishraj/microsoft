@@ -23,33 +23,43 @@ export default (state = initialState, action) => {
    } else if (action.type === "DELETE_homecards") {
 
       console.log(action.payload)
-      
-      const ExitingArray = [...state.Homecardslistarray]
-      const deletedarray = ExitingArray.filter((z)=>{
 
-         if(z.id!=action.payload.id){
+      const ExitingArray = [...state.Homecardslistarray]
+      const deletedarray = ExitingArray.filter((z) => {
+
+         if (z.id != action.payload.id) {
             return true;
          }
 
          return false;
       })
       console.log(deletedarray)
- return {
-   ...state,   
-   Homecardslistarray:deletedarray
+      return {
+         ...state,
+         Homecardslistarray: deletedarray
 
- }
+      }
 
-   }else if (action.type === "updatedata_homecards") {
+   } else if (action.type === "updatedata_homecards") {
 
-      console.log(action.payload.field)
-      console.log(action.payload.id)
-      const field =action.payload.field;
-      console.log(field)
+      const efield = console.log(action.payload.efield)
+      const editedvalue = console.log(action.payload.editedvalue)
+      const id = console.log(action.payload.id)
       const ExitingArray = [...state.Homecardslistarray]
       console.log(ExitingArray)
-      
+      const UpdatedArray = ExitingArray.map((eitem) => {
+         if (eitem.id === id) {
+            eitem[efield] = editedvalue
+         }
+         console.log(eitem);
+         return eitem
+      })
+      console.log(UpdatedArray);
 
+      return {
+         ...state,
+         Homecardslistarray: UpdatedArray
+      }
    };
 
 
