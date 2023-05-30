@@ -28,9 +28,9 @@ export default function HomeCardsAdmin() {
     useEffect(() => {
         dispatch(Homecards())
     }, [])
-    useEffect(() => { 
-        setFinalRenderData(homecardslistdata) 
-     
+    useEffect(() => {
+        setFinalRenderData(homecardslistdata)
+
     }, [homecardslistdata]);
 
     const onchangedata = (e) => {
@@ -113,7 +113,7 @@ export default function HomeCardsAdmin() {
                                     setCancelbtn(true);
                                     setShoweditform(true);
                                 }}>updatedata</button>
-                                {Cancelbtn ? (<button onClick={()=>{
+                                {Cancelbtn ? (<button onClick={() => {
                                     setEditedfield(false);
                                     setshoweditbtn(false);
                                     setShoweditform(false);
@@ -137,15 +137,27 @@ export default function HomeCardsAdmin() {
 
                         return (
                             <div key={index}>
-                                <ol> <strong>img url</strong> {z.urldata} </ol>
+                                <li> <strong>img url</strong> {z.urldata} {showeditbtn ? (<button onClick={() => Editdatafn(z, 'urldata')}>Edit</button>) : ''} </li>
 
-                                <ol>   <strong>Headingdata</strong> {z.Headingdata} </ol>
+                                <li>   <strong>Headingdata</strong> {z.Headingdata}{showeditbtn ? (<button onClick={() => Editdatafn(z, 'Headingdata')}>Edit</button>) : ''} </li>
 
-                                <ol>  <strong>Description</strong> {z.Contentdata}</ol>
+                                <li>  <strong>Description</strong> {z.Contentdata} {showeditbtn ? (<button onClick={() => Editdatafn(z, 'Contentdata')}>Edit</button>) : ''}</li>
 
-                                <ol> <strong>Link</strong> {z.Contentlinkdata} </ol>
+                                <li> <strong>Link</strong> {z.Contentlinkdata} {showeditbtn ? (<button onClick={() => Editdatafn(z, 'Contentlinkdata')}>Edit</button>) : ''}</li>
 
                                 <button onClick={() => deletedata(z)}>Delete</button>
+                                <button onClick={() => {
+                                    setshoweditbtn(true);
+                                    setCancelbtn(true);
+                                    setShoweditform(true);
+                                }}>updatedata</button>
+                                {Cancelbtn ? (<button onClick={() => {
+                                    setEditedfield(false);
+                                    setshoweditbtn(false);
+                                    setShoweditform(false);
+                                    setCancelbtn(false);
+
+                                }} >Cancel</button>) : ''}
 
                             </div>
                         )
