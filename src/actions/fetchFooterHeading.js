@@ -1,19 +1,19 @@
 import { useDispatch  } from 'react-redux';
 
 
-export const fetchMenu = () => (dispatch) => {
-  fetch("http://localhost:3004/menu")
+export const fetchFooterHeading = () => (dispatch) => {
+  fetch("http://localhost:3004/footer-heading")
     .then((res) => res.json())
     .then((menu) =>
       dispatch({
-        type: "MENU_LOAD",
+        type: "FOOTER_HEADING_LOAD",
         payload: menu
       })
     );
 };
 
-export const addMenu = (data) => (dispatch) => {
-  const url = 'http://localhost:3004/menu';
+export const addFooterHeading = (data) => (dispatch) => {
+  const url = 'http://localhost:3004/footer-heading';
   // const data = { "body": "some comment1234", "postId": 5 };
 
 
@@ -27,7 +27,7 @@ export const addMenu = (data) => (dispatch) => {
     .then(response => response.json())
     .then(result => {
       dispatch({
-        type: "ADD_MENU",
+        type: "ADD_FOOTER_HEADING",
         payload: result
       })
     })
@@ -37,8 +37,8 @@ export const addMenu = (data) => (dispatch) => {
 };
 
 
-export const deleteMenu = (id) => (dispatch) => {
-  const url = `http://localhost:3004/menu/${id}`;
+export const deleteFooterHeading = (id) => (dispatch) => {
+  const url = `http://localhost:3004/footer-heading/${id}`;
   // const data = { "body": "some comment1234", "postId": 5 };
 
   fetch(url, {
@@ -49,7 +49,7 @@ export const deleteMenu = (id) => (dispatch) => {
       throw new Error('Error deleting data');
     }
     dispatch({
-      type: "DELETE_MENU",
+      type: "DELETE_FOOTER_HEADING",
       payload: id
     })
   })
@@ -59,8 +59,8 @@ export const deleteMenu = (id) => (dispatch) => {
 };
 
 
-export const updateMenu = (updatedText, id) => (dispatch) => {
-  const url = `http://localhost:3004/menu/${id}`;
+export const updateFooterHeading = (updatedText, id) => (dispatch) => {
+  const url = `http://localhost:3004/footer-heading/${id}`;
   // const data = { "body": "some comment1234", "postId": 5 };
 
   fetch(url, {
@@ -74,7 +74,32 @@ export const updateMenu = (updatedText, id) => (dispatch) => {
     .then(result => {
 
       dispatch({
-        type: "UPDATE_MENU",
+        type: "UPDATE_FOOTER_HEADING",
+        payload: result
+      })
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+};
+
+
+export const updateFooterHeadingPatch = (updatedText, id) => (dispatch) => {
+  const url = `http://localhost:3004/footer-heading/${id}`;
+  // const data = { "body": "some comment1234", "postId": 5 };
+
+  fetch(url, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(updatedText)
+  })
+    .then(response => response.json())
+    .then(result => {
+
+      dispatch({
+        type: "UPDATE_FOOTER_HEADING",
         payload: result
       })
     })

@@ -15,16 +15,70 @@
   ],
   "menu": [
     {
-      "menu_name": "About us",
+      "menu_name": "Whats New",
+      "id": 1
+    }
+  ],
+  "footer-heading": [
+    {
+      "heading": "fdsdfsdfsd",
+      "links": [],
       "id": 1
     },
     {
-      "menu_name": "Contact Us",
+      "heading": "fsdfsdfsd",
+      "links": [],
       "id": 2
     },
     {
-      "menu_name": "Home Page",
+      "heading": "dfsdfdfdfdf",
+      "links": [],
       "id": 3
+    },
+    {
+      "heading": "surface deuo fsdsdf dfdff",
+      "links": [],
+      "id": 4
+    },
+    {
+      "heading": "sdfsdfsdfsdfs",
+      "links": [],
+      "id": 5
+    },
+    {
+      "heading": "sdfsdfsdfsdfs",
+      "links": [],
+      "id": 6
+    },
+    {
+      "heading": "sdfsdfsdfsdfs",
+      "links": [],
+      "id": 7
+    },
+    {
+      "heading": "sdfsdfsdfsdfs",
+      "links": [],
+      "id": 8
+    },
+    {
+      "heading": "some stuff",
+      "links": [
+        {
+          "name": "great",
+          "link": "facebook.com"
+        }
+      ],
+      "id": 9
+    },
+    {
+      "heading": "some stuff",
+      "links": [
+        {
+          "name": "education12",
+          "link": "google12"
+        }
+      ],
+      "id": 10
     }
   ],
   "productlinks": [
