@@ -47,7 +47,7 @@ export default function AdminPanel() {
 <br  />
 <Button variant="contained" href="/admin-Productlinks">Footer</Button><br    />
 <br  />
-<Button variant="contained" href="/admin-Productlinks">Footer-Bottom</Button><br    />
+<Button variant="contained" href="/admin-footerbottom">Footer-Bottom</Button><br    />
     </div>
     </div>
   );
